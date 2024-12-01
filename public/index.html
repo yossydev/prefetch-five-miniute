@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prefetch Test</title>
+    <!-- 事前取得 -->
+    <link rel="prefetch" href="/resource" as="fetch">
+    <script>
+        async function consumeResource() {
+            const response = await fetch('/resource', { cache: 'default' });
+            const text = await response.text();
+            document.getElementById('output').innerText = text;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Prefetch Resource Test</h1>
+    <button onclick="consumeResource()">Consume Resource</button>
+    <pre id="output">Click the button to consume the resource.</pre>
+</body>
+
+</html>
